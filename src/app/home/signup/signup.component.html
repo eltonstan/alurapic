@@ -1,7 +1,7 @@
 <!-- aqui realiza um dataBinding com a propriedade signupForm e um eventBinding que chama o método signup do componente ao dar realizar o evento de submit do formulário -->
 <form [formGroup]="signupForm" class="form mt-4" (submit)="signup()">
     <div class="form-group">
-        <input formControlName="email" class="form-control" placeholder="email" autofocus>
+        <input #emailInput formControlName="email" class="form-control" placeholder="email" autofocus>
         <ap-vmessage
             *ngIf="signupForm.get('email').errors?.required"
             text="Email is required!">
