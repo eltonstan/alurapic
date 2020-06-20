@@ -4,16 +4,32 @@
       <!-- Somente aceita arquivos do tipo imagem -->
       <!-- o change é necessario para carregar o binário do arquivo, com isso vai ligar 
            a variavel file do componente com o evento change -->
-      <input 
-        type="file" 
-        formControlName="file" 
-        accept="image/*"
-        (change)="file = $event.target.files[0]"
-      >
-      <ap-vmessage
-        text="Please, select a photo"
-        *ngIf="photoForm.get('file').errors?.required" >
-      </ap-vmessage>  
+      <div class="form-group" *ngIf="!preview; else previewImage">
+        <button immediateClick type="button" (click)="fileInput.click()" class="btn btn-primary">
+          <i class="fa fa-image fa-4x align-middle"></i>
+        </button>
+        <input
+          #fileInput 
+          hidden
+          formControlName="file" 
+          type="file" 
+          accept="image/*"
+          (change)="handleFile(file = $event.target.files[0])"
+        >
+        <ap-vmessage
+          text="Please, select a photo" 
+          *ngIf="photoForm.get('file').errors?.required"
+        >
+        </ap-vmessage>
+      </div>  
+        
+      <ng-template #previewImage>
+        <div class="text-center">
+          <ap-photo [url]="preview" title="Preview">
+          </ap-photo>
+        </div>
+      </ng-template>
+      
     </div>
     <div class="col-md-6">
 
