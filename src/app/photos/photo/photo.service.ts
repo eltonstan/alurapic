@@ -3,8 +3,11 @@ import { Injectable } from '@angular/core';
 
 import { Photo } from './photo';
 import { PhotoComment } from './photo-comment';
+import { catchError, map } from 'rxjs/operators';
+import { throwError, of } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
-const API = 'http://localhost:3000';
+const API = environment.ApiUrl;
 
 @Injectable({ providedIn: 'root' })
 export class PhotoService {
@@ -51,6 +54,19 @@ export class PhotoService {
     
     removePhoto(photoId: number) {
         return this.http.delete(API + '/photos/' + photoId);
+    }
+
+    like(photoId: number) {
+
+        return this.http.post(
+            API + '/photos/' + photoId +  '/like', {}, {observe: 'response'}
+        )
+        // A linha abaixo significa que independente da resposta se obtivermos resposta sem erro
+        // iremos devolver o boolean true
+        .pipe(map(res => true))
+        .pipe(catchError(err => {
+            return err.status == '304' ? of(false) : throwError(err);
+        }));
     }
 
 }
