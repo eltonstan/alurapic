@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { VMessageModule } from 'src/app/shared/components/vmessage/vmessage.module';
 import { PhotoOwnerOnlyDirective } from './photo-owner-only/photo-owner-only.directive';
+import { AlertModule } from 'src/app/shared/components/alert/alert.module';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { PhotoOwnerOnlyDirective } from './photo-owner-only/photo-owner-only.dir
         PhotoModule,
         RouterModule,
         ReactiveFormsModule,
-        VMessageModule
+        VMessageModule,
+        AlertModule
     ]
 })
 export class PhotoDetailsModule { }
