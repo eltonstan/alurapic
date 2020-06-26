@@ -16,11 +16,17 @@ const routes: Routes = [
                 // Por esse filho estar sem path significa que ele sera o primeiro componente a ser acessado
                 // junto com o pai
                 path: '',
-                component: SignInComponent
+                component: SignInComponent,
+                data: { 
+                    title: 'Sign In'
+                }
             },
             {
                 path: 'signup',
-                component: SignUpComponent
+                component: SignUpComponent,
+                data: { 
+                    title: 'Sign Up'
+                }
             }
         ]
     }

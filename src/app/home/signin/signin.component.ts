@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { PlatformDetectorService } from 'src/app/core/plataform-detector/platform-detector.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     templateUrl: './signin.component.html'
