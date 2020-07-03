@@ -1,15 +1,16 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { PlatformDetectorService } from 'src/app/core/plataform-detector/platform-detector.service';
-import { Title } from '@angular/platform-browser';
 
 @Component({
     templateUrl: './signin.component.html'
 })
 export class SignInComponent implements OnInit {
+
+    fromUrl: string;
 
     loginForm: FormGroup;
     @ViewChild('userNameInput') userNameInput: ElementRef<HTMLInputElement>;
@@ -18,7 +19,8 @@ export class SignInComponent implements OnInit {
         private formBuilder: FormBuilder,
         private authService: AuthService,
         private router: Router,
-        private platformDetectorService: PlatformDetectorService) { }
+        private platformDetectorService: PlatformDetectorService,
+        private activatedRoute: ActivatedRoute) { }
     
     ngOnInit(): void {
         this.loginForm = this.formBuilder.group({
