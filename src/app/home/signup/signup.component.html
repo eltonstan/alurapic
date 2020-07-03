@@ -67,6 +67,10 @@
             *ngIf="signupForm.get('password').errors?.maxlength"
             text="Maximum length is 14">
         </ap-vmessage>
+        <ap-vmessage 
+            *ngIf="signupForm.errors?.userNamePassword"
+            text="Username and password must be different">
+        </ap-vmessage>
     </div>
 
     <!--Invalid verifica se não existe erro em vaidação sincrona, para garantir que vai verificar tb validações assincronas -->
